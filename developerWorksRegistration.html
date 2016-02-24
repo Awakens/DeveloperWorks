@@ -77,36 +77,6 @@
   </script>
   <title>developerWorks registration</title>
   <script type="text/javascript">
-      function validateall()
-      {
-          var email = document.forms['register'].emailAddress.value;
-          var displayname = document.forms['register'].alias.value;
-          var password = document.forms['register'].Password.value;
-          var repassword = document.forms['register'].RePassword.value;
-          var first = document.forms['register'].FName.value;
-          var last = document.forms['register'].LName.value;
-          if (email === "" || displayname === "" || password === "" || repassword === "" || first === "" || last === "")
-              return false;
-          
-          
-          //var emailcheck = checkEmail("email");
-          
-          var emailcheck = validateUserID();
-         // var displaycheck = checkDisplayname("alias");
-         var displaycheck = isValidDisplay();
-          var passwordcheck = validatePassword();
-          var repasswordcheck = validateRePassword();
-          
-          if(emailcheck === true && passwordcheck === true && repasswordcheck === true && displaycheck === "true")
-          {
-              return true;
-          }
-
-          alert(displaycheck);
-
-          return false;
-
-      }
     function checkEmail(emailAddress){
       var Teamvalue = document.getElementById(emailAddress).value;
       var vpreLang = 'en_US';
@@ -181,22 +151,20 @@
         if((passwd != null) && (passwd.length < min_passwd_len)){
           document.getElementById('password_valid').style.display = 'none';
           document.getElementById('password_invalid').style.display = 'inline';
-          return false;
+          return "";
           }else if(passwd.length > max_passwd_len){
             document.getElementById('password_valid').style.display = 'none';
           document.getElementById('password_invalid').style.display = 'inline';
-          return false;
+          return "";
           }         
           var passwdPat= "^([A-Za-z0-9@._-]+)$";
       var matchArray=passwd.match(passwdPat);
       if (matchArray == null) {
             document.getElementById('password_valid').style.display = 'none';
-          document.getElementById('password_invalid').style.display = 'inline';
-          return false;
+          document.getElementById('password_invalid').style.display = 'inline';       
       }else{
           document.getElementById('password_invalid').style.display = 'none';
           document.getElementById('password_valid').style.display = 'inline';
-          return true;
         }
       }   
       function validateRePassword() {
@@ -208,12 +176,12 @@
           document.getElementById('repassword_valid').style.display = 'none';
           document.getElementById('repassword_invalid').style.display = 'inline';
           document.getElementById('repassword_mismatch').style.display = 'none';
-          return false;
+          return "";
           }else if(re_passwd.length > max_passwd_len){
             document.getElementById('repassword_valid').style.display = 'none';
           document.getElementById('repassword_invalid').style.display = 'inline';
           document.getElementById('repassword_mismatch').style.display = 'none';
-          return false;
+          return "";
           }       
           var passwdPat= "^([A-Za-z0-9@._-]+)$";
       var matchArray=re_passwd.match(passwdPat);  
@@ -221,17 +189,15 @@
         document.getElementById('repassword_valid').style.display = 'none';
           document.getElementById('repassword_invalid').style.display = 'inline';
           document.getElementById('repassword_mismatch').style.display = 'none';
-          return false;
+          return "";
       }else if(re_passwd != passwd){
           document.getElementById('repassword_invalid').style.display = 'none';
           document.getElementById('repassword_valid').style.display = 'none';
           document.getElementById('repassword_mismatch').style.display = 'inline';
-          return false;
         }else{
           document.getElementById('repassword_invalid').style.display = 'none';
           document.getElementById('repassword_mismatch').style.display = 'none';
           document.getElementById('repassword_valid').style.display = 'inline';
-          return true;
         }
       }  
       function assignSubmit(){
@@ -275,11 +241,11 @@
         if((emailStr != null) && (emailStr.length < min_passwd_len)){
           document.getElementById('userid_valid').style.display = 'none';
           document.getElementById('userid_invalid').style.display = 'inline';
-          return false;
+          return "";
           }else if(emailStr.length > max_passwd_len){
             document.getElementById('userid_valid').style.display = 'none';
           document.getElementById('userid_invalid').style.display = 'inline';
-          return false;
+          return "";
         }   
         emailStr = emailStr.replace("[" , "");
         emailStr = emailStr.replace("]" , "");    
@@ -296,24 +262,24 @@
           if (matchArray == null) {
               document.getElementById('userid_valid').style.display = 'none';
           document.getElementById('userid_invalid').style.display = 'inline';
-          return false;
+          return "";
           }else{    
             var user=matchArray[1];
             var domain=matchArray[2];           
             if (user.match(userPat) == null) {
                 document.getElementById('userid_valid').style.display = 'none';
             document.getElementById('userid_invalid').style.display = 'inline';
-            return false;
+            return "";
             }else{
               var domainArray=domain.match(domainPat);
               if (domainArray == null) {
                   document.getElementById('userid_valid').style.display = 'none';
               document.getElementById('userid_invalid').style.display = 'inline';
-              return false;
+              return "";
               }else{
                 document.getElementById('userid_valid').style.display = 'inline';
               document.getElementById('userid_invalid').style.display = 'none';
-              return true;
+              return "";
               }
             }
           }      
@@ -403,7 +369,7 @@
                 <div class="ibm-col-6-4">                  
                   <p>Thank you for registering with IBM developerWorks. To  simplify things, you can use the IBM ID and password that you designate below across IBM.</p>
                   <p>Asterisks (<span class="ibm-required">*</span>) indicate fields required to complete this transaction.</p>
-                  <form method="post" action="testPage.html" onsubmit ="return validateall()" class="ibm-row-form" name="register" id="registerform">
+                  <form method="post" action="testPage.html" class="ibm-row-form" name="register" id="registerform">
                     <h2 class="ibm-inner-subhead">Basic registration information</h2>             
                     <div class="ibm-columns">
                       <div class="ibm-col-2-1">
