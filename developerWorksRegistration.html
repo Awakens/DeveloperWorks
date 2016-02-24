@@ -55,7 +55,6 @@
   function displayAlert() {
     var input_Counter = 0;
     var password_Counter = 0;
-   // alert("HELLO!");
     $('input').each(function() {
       input_Counter++;
       if(this.type == "password") {
@@ -66,17 +65,108 @@
   }
   function removetempfunction () {
     var whichindex = document.getElementById('SecurityQues').selectedIndex;
-    if (whichindex == 6) {
-      document.getElementById('customquestioncontainer').style.display = 'block';
-      document.getElementById('custom_question').value='';
+    if(whichindex == 0){
+       document.getElementById('question_invalid').style.display = 'inline';
+    }else{
+      document.getElementById('question_invalid').style.display = 'none';
+      if (whichindex == 6) {
+        document.getElementById('customquestioncontainer').style.display = 'block';
+        document.getElementById('custom_question').value='';
+      }
+      else{
+        document.getElementById('customquestioncontainer').style.display = 'none';
+      }
     }
-    else {
-      document.getElementById('customquestioncontainer').style.display = 'none';
-    }
+  }
+  function validateAns(){
+    var answer = $('#SecurityAns').val().trim();
+      if(answer == ""){
+        $('#ans_invalid').css('display','inline');
+      }else{
+        $('#ans_invalid').css('display','none');
+      }
   }
   </script>
   <title>developerWorks registration</title>
   <script type="text/javascript">
+    function validateFirst() {
+      var firstName = $('#FName').val().trim();
+      if(firstName == ""){
+        $('#userFN_invalid').css('display','inline');
+      }else{
+        $('#userFN_invalid').css('display','none');
+      }
+    }
+    function validateLast() {
+      var lastName = $('#LName').val().trim();
+      if(lastName == ""){
+        $('#userLN_invalid').css('display','inline');
+      }else{
+        $('#userLN_invalid').css('display','none');
+      }
+    }
+    function validateEmail(){
+      var email = document.getElementById('emailAddress').value;
+      var temp = email.indexOf("@");
+      if(email.indexOf("@") == -1){
+        document.getElementById('userid_invalid').style.display = 'inline';
+      }else{
+        document.getElementById('userid_invalid').style.display = 'none';
+      }
+    }
+    function validatePassword(){
+      var pass = $('#Password').val();
+      //var length = pass.length;
+      if(pass.length < 8){
+        $('#password_invalid').css('display','inline');
+      }else{
+        $('#password_invalid').css('display','none');
+      }
+    }
+    function validateRePassword(){
+      var pass = $('#Password').val();
+      var rePass = $('#RePassword').val();
+      if(rePass != pass){
+          if(rePass.length < 8){
+           $('#repassword_invalid').css('display','inline');
+          }else{
+           $('#repassword_invalid').css('display','none');
+          }
+          $('#repassword_mismatch').css('display','inline');
+      }else{
+          $('#repassword_mismatch').css('display','none');
+         if(rePass.length < 8){
+           $('#repassword_invalid').css('display','inline');
+          }else{
+           $('#repassword_invalid').css('display','none');
+          }
+      } 
+    }
+    function validateDisplayName(){
+      var display = $('#alias').val();
+       if(display.length < 3 || display.length > 31){
+        $('#alias_invalid').css('display','inline');
+      }else{
+        $('#alias_invalid').css('display','none');
+      }
+    }
+    function validateCountry(){
+      var country = $('#countryResidence').val();
+      if(country == ""){
+        $('#country_invalid').css('display','inline');
+      }else{
+        $('#country_invalid').css('display','none');
+      }
+    }
+    function validateLang(){
+      var Language = $('#Language').val();
+      if(Language == ""){
+        $('#lang_invalid').css('display','inline');
+      }else{
+        $('#lang_invalid').css('display','none');
+      }
+    }
+    /*
     function checkEmail(emailAddress){
       var Teamvalue = document.getElementById(emailAddress).value;
       var vpreLang = 'en_US';
@@ -106,6 +196,9 @@
       }
       return result;  
     }
+    */
+    /*
+    //Not used anymore
     function checkDisplayname(displayName){
       var Teamvalue = document.getElementById(displayName).value;
       var vpreLang = 'en_US';
@@ -143,7 +236,9 @@
         });
       } 
       return result;  
-    }     
+    }
+    /*
+    /*Not used anymore     
     function validatePassword() {
           var passwd = document.forms['register'].Password.value;
         var min_passwd_len = 8;
@@ -166,7 +261,10 @@
           document.getElementById('password_invalid').style.display = 'none';
           document.getElementById('password_valid').style.display = 'inline';
         }
-      }   
+      }
+      */
+      /*   
+      //not used anymore
       function validateRePassword() {
           var passwd = document.forms['register'].Password.value;
           var re_passwd = document.forms['register'].RePassword.value;
@@ -199,7 +297,8 @@
           document.getElementById('repassword_mismatch').style.display = 'none';
           document.getElementById('repassword_valid').style.display = 'inline';
         }
-      }  
+      }
+      */  
       function assignSubmit(){
         document.getElementById('action').value = 'registerandtake';
         var isValid = "true";
@@ -214,6 +313,7 @@
       }
       return isValid;
       }    
+      /*
       function validateDisplayName() {
           var alias = document.forms['register'].alias.value;
           var min_passwd_len = 3;
@@ -233,6 +333,7 @@
           document.getElementById('alias_valid').style.display = 'inline';
         }
       }   
+      */
       function validateUserID() {
           var emailStr = document.forms['register'].emailAddress.value;
           document.getElementById('userid_invalid').innerHTML='This is not a valid email address.';               
@@ -375,34 +476,36 @@
                       <div class="ibm-col-2-1">
                         <p>
                           <label for="FName">First name:<span class="ibm-required">*</span></label>
-                          <span> <input name="FName" id="FName" size="36" type="text" value="" aria-required="true">
+                          <span> <input name="FName" id="FName" size="36" type="text" value="" aria-required="true" onblur="validateFirst()">
                           </span>
+                           <span id="userFN_invalid" style="display:none;color:red;">This is not a valid first name.</span>
                         </p>
                       </div>
                       <div class="ibm-col-2-1">
                         <p>
                           <label for="LName">Last name:<span class="ibm-required">*</span></label>
-                          <span><input name="LName" id="LName" size="36" type="text" value="" aria-required="true"></span>
+                          <span><input name="LName" id="LName" size="36" type="text" value="" aria-required="true" onblur="validateLast()"></span>
+                          <span id="userLN_invalid" style="display:none;color:red;">This is not a valid last name.</span>
                         </p>
                       </div>
                     </div>
                     <p>
                       <label for="emailAddress">Email address:<span class="ibm-required">*</span><br>
                       <span class="ibm-additional-info dw-lc-labeloverride dw-lc-important-adjust ibm-item-note">(This will also be your IBM ID for signing in)</span></label>
-                      <span><input name="UserID" id="emailAddress" size="42" type="text" value="" onkeyup="validateUserID();" onblur="checkEmail(&#39;emailAddress&#39;);" aria-required="true"></span>
+                      <span><input name="UserID" id="emailAddress" size="42" type="text" value="" aria-required="true" onblur="validateEmail();"></span>
                       <span class="dw-lc-formerror" id="userid_invalid" style="display:none;">This is not a valid email address.</span>
                       <span class="dw-lc-formconfirm" id="userid_valid" style="display:none;">&nbsp;</span>
                     </p>
                     <p>
                       <label for="Password">Password:<span class="ibm-required">*</span><br> <span class="ibm-additional-info dw-lc-labeloverride dw-lc-important-adjust ibm-item-note">(Must be at least 8 characters)</span></label>
-                      <span><input name="Password" id="Password" size="42" type="password" value="" onkeyup="validatePassword();"> </span>
+                      <span><input name="Password" id="Password" size="42" type="password" value="" onblur="validatePassword();"> </span>
                         
                       <span class="dw-lc-formerror" id="password_invalid" style="display:none;">The password you entered is not valid.</span>
                       <span class="dw-lc-formconfirm" id="password_valid" style="display:none;">&nbsp;</span>
                     </p>
                     <p>
                       <label for="RePassword">Verify password:<span class="ibm-required">*</span></label>
-                      <span><input name="RePassword" id="RePassword" size="42" type="password" value="" onkeyup="validateRePassword();"></span>
+                      <span><input name="RePassword" id="RePassword" size="42" type="password" value="" onblur="validateRePassword();"></span>
                       <span class="dw-lc-formerror" id="repassword_mismatch" style="display:none;">The passwords did not match.</span>
                       <span class="dw-lc-formerror" id="repassword_invalid" style="display:none;">The password you entered is not valid.</span>
                       <span class="dw-lc-formconfirm" id="repassword_valid" style="display:none;">&nbsp;</span>
@@ -413,7 +516,7 @@
                           <a class="ibm-feature-link" href="https://www.ibm.com/developerworks/dwwi/jsp/Register.jsp?lang=en_US&amp;appname=developerworks&amp;d=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Ftopics%2F#overlay2" onclick="ibmweb.overlay.show(&#39;overlay2&#39;, this);return false;" role="button">Tips for choosing display name.</a>)
                         </span>
                       </label>
-                      <span><input name="alias" id="alias" size="42" type="text" value="" onkeyup="validateDisplayName();" onblur="checkDisplayname(&#39;alias&#39;);" aria-required="true"></span>
+                      <span><input name="alias" id="alias" size="42" type="text" value="" onblur="validateDisplayName();" onblur="checkDisplayname(&#39;alias&#39;);" aria-required="true"></span>
                       <span class="dw-lc-formerror" id="alias_invalid" style="display:none;">This display name is not valid. Please choose another.</span>
                       <span class="dw-lc-formconfirm" id="alias_valid" style="display:none;">&nbsp;</span>
                     </p>
@@ -452,7 +555,7 @@
                         <span class="ibm-additional-info dw-lc-labeloverride dw-lc-important-adjust ibm-item-note">(Required for warranty)</span>
                       </label>
                       <span>
-                        <select name="CountryOfRes" id="countryResidence">                      
+                        <select name="CountryOfRes" id="countryResidence" onblur="validateCountry();">                      
                             <option selected="selected" value="">Select one</option>                        
                             <option value="CA">Canada</option>
                             <option value="CN">China</option>
@@ -461,6 +564,7 @@
                             <option value="US">United States</option>
                         </select>
                       </span>
+                      <span id="country_invalid" style="display:none;color:red;">Please select a country.</span>
                     </p>
                     <div class="ibm-columns">
                       <div class="ibm-col-2-1">
@@ -473,7 +577,7 @@
                         <p>
                           <label for="Language">Language:<span class="ibm-required">*</span></label>
                           <span>
-                            <select name="Language" id="Language">
+                            <select name="Language" id="Language" onblur="validateLang();">
                               <option value="">Select one</option>
                               <option value="de-DE">Chinese</option>
                               <option selected="selected" value="en-US">English</option>
@@ -482,6 +586,7 @@
                               <option value="de-DE">Uzbek</option>
                             </select>
                           </span>
+                          <span id="lang_invalid" style="display:none;color:red;">Please select a language.</span>
                         </p>
                       </div>
                     </div>
@@ -491,7 +596,7 @@
                         <p>
                           <label for="SecurityQues">Security question:<span class="ibm-required">*</span></label>
                           <span>
-                            <select name="SecurityQues" id="SecurityQues" onchange="removetempfunction()">
+                            <select name="SecurityQues" id="SecurityQues" onblur="removetempfunction()">
                               <option selected="selected" value="">Select one</option>
                               <option value="name">What is your mother's maiden name?</option>
                               <option value="pet">What is the name of your first pet?</option>
@@ -500,6 +605,7 @@
                               <option value="country">In what country were you born?</option>
                             </select>
                           </span>
+                           <span id="question_invalid" style="display:none;color:red;">Please select a question.</span>
                         </p>
                       </div>
                       <div class="ibm-col-2-1">
@@ -511,8 +617,11 @@
                     </div>
                     <p>
                       <label for="SecurityAns">Answer to security question:<span class="ibm-required">*</span></label>
-                      <span><input name="SecurityAns" id="SecurityAns" size="42" type="text" value="" aria-required="true"></span>
+                      <span><input name="SecurityAns" id="SecurityAns" size="42" type="text" value="" aria-required="true" onblur="validateAns();"></span>
                     </p>
+
+                    <span id="ans_invalid" style="display:none;color:red;">Answer is invalid.</span>
+
                     <div class="dw-lc-spacevertical">&nbsp;</div>               
                     <h2 class="ibm-alternate-rule">Privacy preferences</h2>
                     <div id="privacyid">
