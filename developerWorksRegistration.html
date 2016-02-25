@@ -79,35 +79,34 @@
     }
   }
   function validateAns(){
-    var answer = $('#SecurityAns').val().trim();
+    var answer = document.getElementById('SecurityAns').value;
       if(answer == ""){
-        $('#ans_invalid').css('display','inline');
+        document.getElementById('ans_invalid').style.display = 'inline';
       }else{
-        $('#ans_invalid').css('display','none');
+        document.getElementById('ans_invalid').style.display = 'none';
       }
   }
   </script>
   <title>developerWorks registration</title>
   <script type="text/javascript">
     function validateFirst() {
-      var firstName = $('#FName').val().trim();
+      var firstName = document.getElementById('FName').value;
       if(firstName == ""){
-        $('#userFN_invalid').css('display','inline');
+        document.getElementById('userFN_invalid').style.display = 'inline';
       }else{
-        $('#userFN_invalid').css('display','none');
+        document.getElementById('userFN_invalid').style.display = 'none';
       }
     }
     function validateLast() {
-      var lastName = $('#LName').val().trim();
+      var lastName = document.getElementById('LName').value;
       if(lastName == ""){
-        $('#userLN_invalid').css('display','inline');
+        document.getElementById('userLN_invalid').style.display = 'inline';
       }else{
-        $('#userLN_invalid').css('display','none');
+        document.getElementById('userLN_invalid').style.display = 'none';
       }
     }
     function validateEmail(){
       var email = document.getElementById('emailAddress').value;
-      var temp = email.indexOf("@");
       if(email.indexOf("@") == -1){
         document.getElementById('userid_invalid').style.display = 'inline';
       }else{
@@ -115,55 +114,56 @@
       }
     }
     function validatePassword(){
-      var pass = $('#Password').val();
+      var pass = document.getElementById('Password').value;
       //var length = pass.length;
       if(pass.length < 8){
-        $('#password_invalid').css('display','inline');
+        document.getElementById('password_invalid').style.display = 'inline';
       }else{
-        $('#password_invalid').css('display','none');
+        document.getElementById('password_invalid').style.display = 'none';
       }
     }
     function validateRePassword(){
-      var pass = $('#Password').val();
-      var rePass = $('#RePassword').val();
+      var pass = document.getElementById('Password').value;
+      var rePass = document.getElementById('RePassword').value;
       if(rePass != pass){
           if(rePass.length < 8){
-           $('#repassword_invalid').css('display','inline');
+           document.getElementById('repassword_mismatch').style.display = 'none'; 
+           document.getElementById('repassword_invalid').style.display = 'inline';
           }else{
-           $('#repassword_invalid').css('display','none');
+           document.getElementById('repassword_invalid').style.display = 'none';
+           document.getElementById('repassword_mismatch').style.display = 'inline';
           }
-          $('#repassword_mismatch').css('display','inline');
       }else{
-          $('#repassword_mismatch').css('display','none');
+           document.getElementById('repassword_mismatch').style.display = 'none';
          if(rePass.length < 8){
-           $('#repassword_invalid').css('display','inline');
+           document.getElementById('repassword_invalid').style.display = 'inline';
           }else{
-           $('#repassword_invalid').css('display','none');
+           document.getElementById('repassword_invalid').style.display = 'none';
           }
       } 
     }
     function validateDisplayName(){
-      var display = $('#alias').val();
+      var display = document.getElementById('alias').value;
        if(display.length < 3 || display.length > 31){
-        $('#alias_invalid').css('display','inline');
+        document.getElementById('alias_invalid').style.display = 'inline';
       }else{
-        $('#alias_invalid').css('display','none');
+        document.getElementById('alias_invalid').style.display = 'none';
       }
     }
     function validateCountry(){
-      var country = $('#countryResidence').val();
+      var country = document.getElementById('countryResidence').value;
       if(country == ""){
-        $('#country_invalid').css('display','inline');
+        document.getElementById('country_invalid').style.display = 'inline';
       }else{
-        $('#country_invalid').css('display','none');
+        document.getElementById('country_invalid').style.display = 'none';
       }
     }
     function validateLang(){
-      var Language = $('#Language').val();
+      var Language = document.getElementById('Language').value
       if(Language == ""){
-        $('#lang_invalid').css('display','inline');
+        document.getElementById('lang_invalid').style.display = 'inline';
       }else{
-        $('#lang_invalid').css('display','none');
+        document.getElementById('lang_invalid').style.display = 'none';
       }
     }
     /*
