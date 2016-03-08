@@ -29,6 +29,8 @@ public class CountryValidationServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setHeader("Cache-Control", "no-cache");
+        response.setHeader("Access-Control-Allow-Origin", "*");
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         String c = request.getParameter("country");
