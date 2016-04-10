@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">out.println("<!DOCTYPE html>");
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">("<!DOCTYPE html>");
         <title>Congratulations!</title>
     </head>
     <body>
