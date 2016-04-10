@@ -417,7 +417,7 @@
   <script type="text/javascript" async="" charset="utf-8" src="./files/i.js" id="tealium_setTTDid"></script>
 </head>
 <body id="ibm-com" class="v17" aria-busy="false">
-    <jsp:useBean id="b" class="bean.FormBean"scope="application" />
+    <jsp:useBean id="b" class="bean.FormBean" scope="application" />
   <div id="ibm-top" class="ibm-landing-page ibm-no-scroll"><img src="./files/ibm_logo_print.png" width="43" height="15" id="ibm-print-masthead" alt="IBM Print">      
     <!-- MASTHEAD_BEGIN -->
     <div id="ibm-masthead" role="banner">
@@ -547,12 +547,12 @@
                       </label>
                       <span>
                         <select name="CountryOfRes" id="countryResidence" onblur="validateCountry();">                      
-                            <option selected="selected" value="">Select one</option>                        
-                            <option value="CA">Canada</option>
-                            <option value="CN">China</option>
-                            <option value="FR">France</option>
-                            <option value="DE">Germany</option>
-                            <option value="US">United States</option>
+                            <option value="" ${b.countryOfRes.equals("") ? 'selected="selected"' : ''}>Select one</option>                        
+                            <option value="CA"${b.countryOfRes.equals("CA") ? 'selected="selected"' : ''}>Canada</option>
+                            <option value="CN"${b.countryOfRes.equals("CN") ? 'selected="selected"' : ''}>China</option>
+                            <option value="FR"${b.countryOfRes.equals("FR") ? 'selected="selected"' : ''}>France</option>
+                            <option value="DE"${b.countryOfRes.equals("DE") ? 'selected="selected"' : ''}>Germany</option>
+                            <option value="US"${b.countryOfRes.equals("US") ? 'selected="selected"' : ''}>United States</option>
                         </select>
                       </span>
                       <span id="country_invalid" style="display:none;color:red;">Please select a country.</span>
@@ -569,12 +569,12 @@
                           <label for="Language">Language:<span class="ibm-required">*</span></label>
                           <span>
                               <select name="Language" value="${b.language}"id="Language" onblur="validateLang();">
-                              <option value="">Select one</option>
-                              <option value="de-DE">Chinese</option>
-                              <option value="en-US">English</option>
-                              <option value="fr-FR">French</option>
-                              <option value="de-DE">German</option>
-                              <option value="de-DE">Uzbek</option>
+                                  <option value="" ${b.language.equals("") ? 'selected="selected"' : '' }>Select one</option>
+                              <option value="de-CH"${b.language.equals("de-CH") ? 'selected="selected"' : '' }>Chinese</option>
+                              <option value="en-US"${b.language.equals("en-US") ? 'selected="selected"' : '' }>English</option>
+                              <option value="fr-FR"${b.language.equals("fr-FR") ? 'selected="selected"' : '' }>French</option>
+                              <option value="de-GE"${b.language.equals("de-GE") ? 'selected="selected"' : '' }>German</option>
+                              <option value="de-UZ"${b.language.equals("de-UZ") ? 'selected="selected"' : '' }>Uzbek</option>
                             </select>
                           </span>
                           <span id="lang_invalid" style="display:none;color:red;">Please select a language.</span>
@@ -588,12 +588,12 @@
                           <label for="SecurityQues">Security question:<span class="ibm-required">*</span></label>
                           <span>
                             <select name="SecurityQues" id="SecurityQues" onblur="removetempfunction()">
-                              <option selected="selected" value="">Select one</option>
-                              <option value="name">What is your mother's maiden name?</option>
-                              <option value="pet">What is the name of your first pet?</option>
-                              <option value="school">What was the name of your first school?</option>
-                              <option value="job">In what city or town was your first job?</option>
-                              <option value="country">In what country were you born?</option>
+                                <option value="" ${b.sercurityQues.equals("") ? 'selected="selected"' : ''}>Select one</option>
+                              <option value="name" ${b.sercurityQues.equals("name") ? 'selected="selected"' : ''}>What is your mother's maiden name?</option>
+                              <option value="pet" ${b.sercurityQues.equals("pet") ? 'selected="selected"' : ''}>What is the name of your first pet?</option>
+                              <option value="school" ${b.sercurityQues.equals("school") ? 'selected="selected"' : ''}>What was the name of your first school?</option>
+                              <option value="job"${b.sercurityQues.equals("job") ? 'selected="selected"' : ''}>In what city or town was your first job?</option>
+                              <option value="country"${b.sercurityQues.equals("country") ? 'selected="selected"' : ''}>In what country were you born?</option>
                             </select>
                           </span>
                            <span id="question_invalid" style="display:none;color:red;">Please select a question.</span>
@@ -619,10 +619,10 @@
                       <p>Please keep me informed of products, services and offerings from IBM companies worldwide.</p>
                       <p>
                       <span class="ibm-input-group">
-                      <input id="NC_CHECK_EMAIL" value="0" name="NC_CHECK_EMAIL" type="checkbox">
+                          <input id="NC_CHECK_EMAIL" value="0" name="NC_CHECK_EMAIL" type="checkbox" ${b.contactEmail != null ? 'checked="checked"' : ""}>
                       <label for="NC_CHECK_EMAIL">by email.</label></span><br>
                       <span class="ibm-input-group">
-                      <input id="NC_CHECK_OTHER" value="4" name="NC_CHECK_OTHER" type="checkbox">
+                      <input id="NC_CHECK_OTHER" value="4" name="NC_CHECK_OTHER" type="checkbox" ${b.contactOther != null ? 'checked="checked"' : ""}>
                       <label for="NC_CHECK_OTHER">by telephone or postal mail.</label></span><br>
                       </p>
                       <p>I accept&nbsp; <a href="http://www.ibm.com/privacy/us/en/" target="_blank">IBM's Privacy statement</a>.</p>

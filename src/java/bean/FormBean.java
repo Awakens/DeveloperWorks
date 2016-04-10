@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package bean;
 
 import java.io.PrintWriter;
@@ -12,15 +8,7 @@ import java.io.PrintWriter;
  * @author Cokers
  */
 public class FormBean {
-    private String FName,LName,UserID,Password,RePassword,alias,CountryOfRes,City,Language,SecurityQues,SecurityAns;
-
-    public String getCity() {
-        return City;
-    }
-    public void setCity(String City) {
-        this.City = City;
-    }
-    
+    private String FName,LName,UserID,Password,RePassword,alias,CountryOfRes,City,Language,SecurityQues,SecurityAns,contactEmail, contactOther;
     
     public boolean isValid(){
         if(UserID.equals("") || UserID == null){
@@ -29,6 +17,29 @@ public class FormBean {
             return true;
         }
     }
+    
+    public String getContactEmail() {
+        return contactEmail;
+    }
+    public void setContactEmail(String contactEmail) {
+        this.contactEmail = contactEmail;
+    }
+
+    public String getContactOther() {
+        return contactOther;
+    }
+
+    public void setContactOther(String contactOther) {
+        this.contactOther = contactOther;
+    }
+
+    public String getCity() {
+        return City;
+    }
+    public void setCity(String City) {
+        this.City = City;
+    }
+    
     public void setFName(String s){
         FName = s;
     }
