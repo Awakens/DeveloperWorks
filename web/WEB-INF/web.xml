@@ -8,4 +8,13 @@
         <servlet-name>CountryValidationServlet</servlet-name>
         <url-pattern>/CountryValidationServlet</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>FormValidationServlet</servlet-name>
+        <servlet-class>servlet.FormValidationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FormValidationServlet</servlet-name>
+        <url-pattern>/FormValidationServlet</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -376,7 +376,8 @@
           }      
       }
   </script>
-  <script type="text/javascript" charset="utf-8" src="./files/Moveable.xd.js"></script>
+  <script typ
+  e="text/javascript" charset="utf-8" src="./files/Moveable.xd.js"></script>
   <script type="text/javascript" charset="utf-8" src="./files/Mover.xd.js"></script>
   <script type="text/javascript" charset="utf-8" src="./files/_ContentPaneResizeMixin.xd.js"></script>
   <script type="text/javascript" charset="utf-8" src="./files/html.xd.js"></script>
@@ -459,7 +460,7 @@
                 <div class="ibm-col-6-4">                  
                   <p>Thank you for registering with IBM developerWorks. To  simplify things, you can use the IBM ID and password that you designate below across IBM.</p>
                   <p>Asterisks (<span class="ibm-required">*</span>) indicate fields required to complete this transaction.</p>
-                  <form method="post" action="testPage.html" class="ibm-row-form" name="register" id="registerform">
+                  <form method="post" action="FormValidationServlet" class="ibm-row-form" name="register" id="registerform">
                     <h2 class="ibm-inner-subhead">Basic registration information</h2>             
                     <div class="ibm-columns">
                       <div class="ibm-col-2-1">
