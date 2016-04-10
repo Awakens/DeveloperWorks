@@ -12,7 +12,14 @@ import java.io.PrintWriter;
  * @author Cokers
  */
 public class FormBean {
-    private String FName,LName,UserID,Password,RePassword,alias,CountryOfRes,Language,SecurityQues,SecurityAns;
+    private String FName,LName,UserID,Password,RePassword,alias,CountryOfRes,City,Language,SecurityQues,SecurityAns;
+
+    public String getCity() {
+        return City;
+    }
+    public void setCity(String City) {
+        this.City = City;
+    }
     
     
     public boolean isValid(){

@@ -417,6 +417,7 @@
   <script type="text/javascript" async="" charset="utf-8" src="./files/i.js" id="tealium_setTTDid"></script>
 </head>
 <body id="ibm-com" class="v17" aria-busy="false">
+    <jsp:useBean id="b" class="bean.FormBean"scope="application" />
   <div id="ibm-top" class="ibm-landing-page ibm-no-scroll"><img src="./files/ibm_logo_print.png" width="43" height="15" id="ibm-print-masthead" alt="IBM Print">      
     <!-- MASTHEAD_BEGIN -->
     <div id="ibm-masthead" role="banner">
@@ -466,7 +467,7 @@
                       <div class="ibm-col-2-1">
                         <p>
                           <label for="FName">First name:<span class="ibm-required">*</span></label>
-                          <span> <input name="FName" id="FName" size="36" type="text" value="" aria-required="true" onblur="validateFirst()">
+                          <span> <input name="FName" id="FName" size="36" type="text" value="${b.FName}" aria-required="true" onblur="validateFirst()">
                           </span>
                            <span id="userFN_invalid" style="display:none;color:red;">This is not a valid first name.</span>
                         </p>
@@ -474,7 +475,7 @@
                       <div class="ibm-col-2-1">
                         <p>
                           <label for="LName">Last name:<span class="ibm-required">*</span></label>
-                          <span><input name="LName" id="LName" size="36" type="text" value="" aria-required="true" onblur="validateLast()"></span>
+                          <span><input name="LName" id="LName" size="36" type="text" value="${b.LName}" aria-required="true" onblur="validateLast()"></span>
                           <span id="userLN_invalid" style="display:none;color:red;">This is not a valid last name.</span>
                         </p>
                       </div>
@@ -482,20 +483,20 @@
                     <p>
                       <label for="emailAddress">Email address:<span class="ibm-required">*</span><br>
                       <span class="ibm-additional-info dw-lc-labeloverride dw-lc-important-adjust ibm-item-note">(This will also be your IBM ID for signing in)</span></label>
-                      <span><input name="UserID" id="emailAddress" size="42" type="text" value="" aria-required="true" onblur="validateEmail();"></span>
+                        <span><input name="UserID" id="emailAddress" size="42" type="text" value="${b.userID}" aria-required="true" onblur="validateEmail();"></span>
                       <span class="dw-lc-formerror" id="userid_invalid" style="display:none;">This is not a valid email address.</span>
                       <span class="dw-lc-formconfirm" id="userid_valid" style="display:none;">&nbsp;</span>
                     </p>
                     <p>
                       <label for="Password">Password:<span class="ibm-required">*</span><br> <span class="ibm-additional-info dw-lc-labeloverride dw-lc-important-adjust ibm-item-note">(Must be at least 8 characters)</span></label>
-                      <span><input name="Password" id="Password" size="42" type="password" value="" onblur="validatePassword();"> </span>
+                      <span><input name="Password" id="Password" size="42" type="password" value="${b.pasword}" onblur="validatePassword();"> </span>
                         
                       <span class="dw-lc-formerror" id="password_invalid" style="display:none;">The password you entered is not valid.</span>
                       <span class="dw-lc-formconfirm" id="password_valid" style="display:none;">&nbsp;</span>
                     </p>
                     <p>
                       <label for="RePassword">Verify password:<span class="ibm-required">*</span></label>
-                      <span><input name="RePassword" id="RePassword" size="42" type="password" value="" onblur="validateRePassword();"></span>
+                      <span><input name="RePassword" id="RePassword" size="42" type="password" value="${b.rePassword}" onblur="validateRePassword();"></span>
                       <span class="dw-lc-formerror" id="repassword_mismatch" style="display:none;">The passwords did not match.</span>
                       <span class="dw-lc-formerror" id="repassword_invalid" style="display:none;">The password you entered is not valid.</span>
                       <span class="dw-lc-formconfirm" id="repassword_valid" style="display:none;">&nbsp;</span>
@@ -506,7 +507,7 @@
                           <a class="ibm-feature-link" href="https://www.ibm.com/developerworks/dwwi/jsp/Register.jsp?lang=en_US&amp;appname=developerworks&amp;d=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Ftopics%2F#overlay2" onclick="ibmweb.overlay.show(&#39;overlay2&#39;, this);return false;" role="button">Tips for choosing display name.</a>)
                         </span>
                       </label>
-                      <span><input name="alias" id="alias" size="42" type="text" value="" onblur="validateDisplayName();" aria-required="true"></span>
+                        <span><input name="alias" id="alias" size="42" type="text" value="${b.alias}" onblur="validateDisplayName();" aria-required="true"></span>
                       <span class="dw-lc-formerror" id="alias_invalid" style="display:none;">This display name is not valid. Please choose another.</span>
                       <span class="dw-lc-formconfirm" id="alias_valid" style="display:none;">&nbsp;</span>
                     </p>
@@ -560,17 +561,17 @@
                       <div class="ibm-col-2-1">
                         <p>
                           <label for="City">City:</label>
-                          <span><input name="City" id="City" size="36" type="text" value=""></span>
+                          <span><input name="City" id="City" size="36" type="text" value="${b.city}"></span>
                         </p>
                       </div>                  
                       <div class="ibm-col-2-1">
                         <p>
                           <label for="Language">Language:<span class="ibm-required">*</span></label>
                           <span>
-                            <select name="Language" id="Language" onblur="validateLang();">
+                              <select name="Language" value="${b.language}"id="Language" onblur="validateLang();">
                               <option value="">Select one</option>
                               <option value="de-DE">Chinese</option>
-                              <option selected="selected" value="en-US">English</option>
+                              <option value="en-US">English</option>
                               <option value="fr-FR">French</option>
                               <option value="de-DE">German</option>
                               <option value="de-DE">Uzbek</option>
@@ -607,7 +608,7 @@
                     </div>
                     <p>
                       <label for="SecurityAns">Answer to security question:<span class="ibm-required">*</span></label>
-                      <span><input name="SecurityAns" id="SecurityAns" size="42" type="text" value="" aria-required="true" onblur="validateAns();"></span>
+                      <span><input name="SecurityAns" id="SecurityAns" size="42" type="text" value="${b.securityAns}" aria-required="true" onblur="validateAns();"></span>
                     </p>
 
                     <span id="ans_invalid" style="display:none;color:red;">Answer is invalid.</span>

@@ -49,6 +49,7 @@ public class FormValidationServlet extends HttpServlet {
         b.setRePassword(request.getParameter("RePassword"));
         b.setAlias(request.getParameter("alias"));
         b.setCountryOfRes(request.getParameter("CountryOfRes"));
+        b.setCity(request.getParameter("City"));
         b.setLanguage(request.getParameter("Language"));
         b.setSecurityQues(request.getParameter("SecurityQues"));
         b.setSecurityAns(request.getParameter("SecurityAns"));
