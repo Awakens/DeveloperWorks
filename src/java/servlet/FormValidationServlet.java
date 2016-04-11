@@ -38,10 +38,10 @@ public class FormValidationServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         ServletContext sc = this.getServletContext();
         FormBean b = (FormBean) sc.getAttribute("b");
+        if(b == null){
             b = new FormBean();
             sc.setAttribute("b", b);
-        //String email = request.getParameter("email");
-        Enumeration<String> parameterNames = request.getParameterNames();
+        }
         b.setFName(request.getParameter("FName"));
         b.setLName(request.getParameter("LName"));
         b.setUserID(request.getParameter("UserID"));
@@ -58,7 +58,7 @@ public class FormValidationServlet extends HttpServlet {
         if(b.isValid()){
             request.getRequestDispatcher("/congratulations.jsp").forward(request, response);
         }else{
-            request.getRequestDispatcher("/index.jsp").forward(request, response);
+            request.getRequestDispatcher("/InvalidForm.jsp").forward(request, response);
         }
     }
 

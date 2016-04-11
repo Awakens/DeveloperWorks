@@ -9,7 +9,6 @@ import java.io.PrintWriter;
  */
 public class FormBean {
     private String FName,LName,UserID,Password,RePassword,alias,CountryOfRes,City,Language,SecurityQues,SecurityAns,contactEmail, contactOther;
-    
     public boolean isValid(){
         if(UserID.equals("") || UserID == null){
             return false;

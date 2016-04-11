@@ -417,6 +417,7 @@
   <script type="text/javascript" async="" charset="utf-8" src="./files/i.js" id="tealium_setTTDid"></script>
 </head>
 <body id="ibm-com" class="v17" aria-busy="false">
+    <jsp:useBean id="b" class="bean.FormBean" scope="application" />
   <div id="ibm-top" class="ibm-landing-page ibm-no-scroll"><img src="./files/ibm_logo_print.png" width="43" height="15" id="ibm-print-masthead" alt="IBM Print">      
     <!-- MASTHEAD_BEGIN -->
     <div id="ibm-masthead" role="banner">
@@ -466,7 +467,7 @@
                       <div class="ibm-col-2-1">
                         <p>
                           <label for="FName">First name:<span class="ibm-required">*</span></label>
-                          <span> <input name="FName" id="FName" size="36" type="text" value="" aria-required="true" onblur="validateFirst()">
+                          <span> <input name="FName" id="FName" size="36" type="text" value="${b.FName}" aria-required="true" onblur="validateFirst()">
                           </span>
                            <span id="userFN_invalid" style="display:none;color:red;">This is not a valid first name.</span>
                         </p>
@@ -474,7 +475,7 @@
                       <div class="ibm-col-2-1">
                         <p>
                           <label for="LName">Last name:<span class="ibm-required">*</span></label>
-                          <span><input name="LName" id="LName" size="36" type="text" value="" aria-required="true" onblur="validateLast()"></span>
+                          <span><input name="LName" id="LName" size="36" type="text" value="${b.LName}" aria-required="true" onblur="validateLast()"></span>
                           <span id="userLN_invalid" style="display:none;color:red;">This is not a valid last name.</span>
                         </p>
                       </div>
@@ -482,20 +483,20 @@
                     <p>
                       <label for="emailAddress">Email address:<span class="ibm-required">*</span><br>
                       <span class="ibm-additional-info dw-lc-labeloverride dw-lc-important-adjust ibm-item-note">(This will also be your IBM ID for signing in)</span></label>
-                        <span><input name="UserID" id="emailAddress" size="42" type="text" value="" aria-required="true" onblur="validateEmail();"></span>
+                        <span><input name="UserID" id="emailAddress" size="42" type="text" value="${b.userID}" aria-required="true" onblur="validateEmail();"></span>
                       <span class="dw-lc-formerror" id="userid_invalid" style="display:none;">This is not a valid email address.</span>
                       <span class="dw-lc-formconfirm" id="userid_valid" style="display:none;">&nbsp;</span>
                     </p>
                     <p>
                       <label for="Password">Password:<span class="ibm-required">*</span><br> <span class="ibm-additional-info dw-lc-labeloverride dw-lc-important-adjust ibm-item-note">(Must be at least 8 characters)</span></label>
-                      <span><input name="Password" id="Password" size="42" type="password" value="" onblur="validatePassword();"> </span>
+                      <span><input name="Password" id="Password" size="42" type="password" value="${b.pasword}" onblur="validatePassword();"> </span>
                         
                       <span class="dw-lc-formerror" id="password_invalid" style="display:none;">The password you entered is not valid.</span>
                       <span class="dw-lc-formconfirm" id="password_valid" style="display:none;">&nbsp;</span>
                     </p>
                     <p>
                       <label for="RePassword">Verify password:<span class="ibm-required">*</span></label>
-                      <span><input name="RePassword" id="RePassword" size="42" type="password" value="" onblur="validateRePassword();"></span>
+                      <span><input name="RePassword" id="RePassword" size="42" type="password" value="${b.rePassword}" onblur="validateRePassword();"></span>
                       <span class="dw-lc-formerror" id="repassword_mismatch" style="display:none;">The passwords did not match.</span>
                       <span class="dw-lc-formerror" id="repassword_invalid" style="display:none;">The password you entered is not valid.</span>
                       <span class="dw-lc-formconfirm" id="repassword_valid" style="display:none;">&nbsp;</span>
@@ -506,7 +507,7 @@
                           <a class="ibm-feature-link" href="https://www.ibm.com/developerworks/dwwi/jsp/Register.jsp?lang=en_US&amp;appname=developerworks&amp;d=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Ftopics%2F#overlay2" onclick="ibmweb.overlay.show(&#39;overlay2&#39;, this);return false;" role="button">Tips for choosing display name.</a>)
                         </span>
                       </label>
-                        <span><input name="alias" id="alias" size="42" type="text" value="" onblur="validateDisplayName();" aria-required="true"></span>
+                        <span><input name="alias" id="alias" size="42" type="text" value="${b.alias}" onblur="validateDisplayName();" aria-required="true"></span>
                       <span class="dw-lc-formerror" id="alias_invalid" style="display:none;">This display name is not valid. Please choose another.</span>
                       <span class="dw-lc-formconfirm" id="alias_valid" style="display:none;">&nbsp;</span>
                     </p>
@@ -546,12 +547,12 @@
                       </label>
                       <span>
                         <select name="CountryOfRes" id="countryResidence" onblur="validateCountry();">                      
-                            <option value="" >Select one</option>                        
-                            <option value="CA">Canada</option>
-                            <option value="CN">China</option>
-                            <option value="FR">France</option>
-                            <option value="DE">Germany</option>
-                            <option value="US">United States</option>
+                            <option value="" ${b.countryOfRes.equals("") ? 'selected="selected"' : ''}>Select one</option>                        
+                            <option value="CA"${b.countryOfRes.equals("CA") ? 'selected="selected"' : ''}>Canada</option>
+                            <option value="CN"${b.countryOfRes.equals("CN") ? 'selected="selected"' : ''}>China</option>
+                            <option value="FR"${b.countryOfRes.equals("FR") ? 'selected="selected"' : ''}>France</option>
+                            <option value="DE"${b.countryOfRes.equals("DE") ? 'selected="selected"' : ''}>Germany</option>
+                            <option value="US"${b.countryOfRes.equals("US") ? 'selected="selected"' : ''}>United States</option>
                         </select>
                       </span>
                       <span id="country_invalid" style="display:none;color:red;">Please select a country.</span>
@@ -560,20 +561,20 @@
                       <div class="ibm-col-2-1">
                         <p>
                           <label for="City">City:</label>
-                          <span><input name="City" id="City" size="36" type="text" value=""></span>
+                          <span><input name="City" id="City" size="36" type="text" value="${b.city}"></span>
                         </p>
                       </div>                  
                       <div class="ibm-col-2-1">
                         <p>
                           <label for="Language">Language:<span class="ibm-required">*</span></label>
                           <span>
-                              <select name="Language" value=""id="Language" onblur="validateLang();">
-                                  <option value="" >Select one</option>
-                              <option value="de-CH">Chinese</option>
-                              <option value="en-US">English</option>
-                              <option value="fr-FR">French</option>
-                              <option value="de-GE">German</option>
-                              <option value="de-UZ">Uzbek</option>
+                              <select name="Language" value="${b.language}"id="Language" onblur="validateLang();">
+                                  <option value="" ${b.language.equals("") ? 'selected="selected"' : '' }>Select one</option>
+                              <option value="de-CH"${b.language.equals("de-CH") ? 'selected="selected"' : '' }>Chinese</option>
+                              <option value="en-US"${b.language.equals("en-US") ? 'selected="selected"' : '' }>English</option>
+                              <option value="fr-FR"${b.language.equals("fr-FR") ? 'selected="selected"' : '' }>French</option>
+                              <option value="de-GE"${b.language.equals("de-GE") ? 'selected="selected"' : '' }>German</option>
+                              <option value="de-UZ"${b.language.equals("de-UZ") ? 'selected="selected"' : '' }>Uzbek</option>
                             </select>
                           </span>
                           <span id="lang_invalid" style="display:none;color:red;">Please select a language.</span>
@@ -587,12 +588,12 @@
                           <label for="SecurityQues">Security question:<span class="ibm-required">*</span></label>
                           <span>
                             <select name="SecurityQues" id="SecurityQues" onblur="removetempfunction()">
-                                <option value="" >Select one</option>
-                              <option value="name">What is your mother's maiden name?</option>
-                              <option value="pet">What is the name of your first pet?</option>
-                              <option value="school">What was the name of your first school?</option>
-                              <option value="job">In what city or town was your first job?</option>
-                              <option value="country">In what country were you born?</option>
+                                <option value="" ${b.sercurityQues.equals("") ? 'selected="selected"' : ''}>Select one</option>
+                              <option value="name" ${b.sercurityQues.equals("name") ? 'selected="selected"' : ''}>What is your mother's maiden name?</option>
+                              <option value="pet" ${b.sercurityQues.equals("pet") ? 'selected="selected"' : ''}>What is the name of your first pet?</option>
+                              <option value="school" ${b.sercurityQues.equals("school") ? 'selected="selected"' : ''}>What was the name of your first school?</option>
+                              <option value="job"${b.sercurityQues.equals("job") ? 'selected="selected"' : ''}>In what city or town was your first job?</option>
+                              <option value="country"${b.sercurityQues.equals("country") ? 'selected="selected"' : ''}>In what country were you born?</option>
                             </select>
                           </span>
                            <span id="question_invalid" style="display:none;color:red;">Please select a question.</span>
@@ -607,7 +608,7 @@
                     </div>
                     <p>
                       <label for="SecurityAns">Answer to security question:<span class="ibm-required">*</span></label>
-                      <span><input name="SecurityAns" id="SecurityAns" size="42" type="text" value="" aria-required="true" onblur="validateAns();"></span>
+                      <span><input name="SecurityAns" id="SecurityAns" size="42" type="text" value="${b.securityAns}" aria-required="true" onblur="validateAns();"></span>
                     </p>
 
                     <span id="ans_invalid" style="display:none;color:red;">Answer is invalid.</span>
@@ -618,10 +619,10 @@
                       <p>Please keep me informed of products, services and offerings from IBM companies worldwide.</p>
                       <p>
                       <span class="ibm-input-group">
-                          <input id="NC_CHECK_EMAIL" value="0" name="NC_CHECK_EMAIL" type="checkbox">
+                          <input id="NC_CHECK_EMAIL" value="0" name="NC_CHECK_EMAIL" type="checkbox" ${b.contactEmail != null ? 'checked="checked"' : ""}>
                       <label for="NC_CHECK_EMAIL">by email.</label></span><br>
                       <span class="ibm-input-group">
-                      <input id="NC_CHECK_OTHER" value="4" name="NC_CHECK_OTHER" type="checkbox">
+                      <input id="NC_CHECK_OTHER" value="4" name="NC_CHECK_OTHER" type="checkbox" ${b.contactOther != null ? 'checked="checked"' : ""}>
                       <label for="NC_CHECK_OTHER">by telephone or postal mail.</label></span><br>
                       </p>
                       <p>I accept&nbsp; <a href="http://www.ibm.com/privacy/us/en/" target="_blank">IBM's Privacy statement</a>.</p>
