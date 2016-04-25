@@ -33,13 +33,17 @@
                 </c:forEach>
             </c:forEach>
             </c:catch>
-                    <tr><td>Bean information via custom Tag:</td></tr>
-                 <myLib:beaner bean="${b}">       
+                    <tr>
+                        <td>
+                            Bean information via custom Tag:
+                        </td>
+                    </tr>
+                    <myLib:beaner bean="${b}">       
                     <tr style="background-color: #ccffcc">
-                     <td>${name}</td>
-                     <td>${value}</td>
-            </myLib:beaner>  
-            
+                        <td>${name}</td>
+                        <td>${value}</td>
+                    </tr>
+                    </myLib:beaner>         
         </table>
     </body>
 </html>

@@ -12,13 +12,10 @@ import java.util.Map;
 import java.util.Set;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.JspFragment;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
-/**
- *
- * @author Cokers
- */
 public class beaner extends SimpleTagSupport {
     private FormBean bean;
     /**
@@ -53,6 +50,8 @@ public class beaner extends SimpleTagSupport {
             variables.put("ContactEmail", bean.getContactEmail());
             variables.put("ContactOther", bean.getContactOther());
             for(Map.Entry<String, String> entry : variables.entrySet()){
+                PageContext context = (PageContext)getJspContext();
+                context.getSession().setAttribute(entry.getKey(), entry.getValue());
                 getJspContext().setAttribute("name", entry.getKey());
                 getJspContext().setAttribute("value", entry.getValue());
                 if (f != null) {
