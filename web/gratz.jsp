@@ -2,6 +2,7 @@
 <%@page import="java.util.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <%@taglib prefix="myLib" uri= "/WEB-INF/tlds/myLib" %>
 <!DOCTYPE html>
 <html>
@@ -18,7 +19,6 @@
                 <td>Name</td>
                 <td>Value</td>
             </tr>
-            <c:catch var="catchException">
             <c:set var="scopes" value="${[applicationScope,sessionScope,requestScope, param, header]}"></c:set>
             <c:forEach var="scope" items="${scopes}">
                 <c:forEach var="p" items="${scope}">
@@ -32,12 +32,11 @@
                     </tr>
                 </c:forEach>
             </c:forEach>
-            </c:catch>
-                    <tr><td>Bean information via custom Tag:</td></tr>
                  <myLib:beaner bean="${b}">       
                     <tr style="background-color: #ccffcc">
                      <td>${name}</td>
                      <td>${value}</td>
+                 </tr>
             </myLib:beaner>  
             
         </table>

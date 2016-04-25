@@ -31,6 +31,12 @@ public class beaner extends SimpleTagSupport {
         JspWriter out = getJspContext().getOut();
         
         try {
+            // TODO: insert code to write html before writing the body content.
+            // e.g.:
+            //
+            // out.println("<strong>" + attribute_1 + "</strong>");
+            // out.println("    <blockquote>");
+            
             JspFragment f = getJspBody();
             Map<String, String> variables = new HashMap<String, String>();
             variables.put("FName", bean.getFName());
@@ -49,11 +55,16 @@ public class beaner extends SimpleTagSupport {
             for(Map.Entry<String, String> entry : variables.entrySet()){
                 getJspContext().setAttribute("name", entry.getKey());
                 getJspContext().setAttribute("value", entry.getValue());
-            }
-            if (f != null) {
+                if (f != null) {
                 f.invoke(out);
+                }
             }
-           
+            
+            
+            // TODO: insert code to write html after writing the body content.
+            // e.g.:
+            //
+            // out.println("    </blockquote>");
         } catch (java.io.IOException ex) {
             throw new JspException("Error in beaner tag", ex);
         }
