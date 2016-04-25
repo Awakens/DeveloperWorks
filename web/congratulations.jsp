@@ -2,6 +2,8 @@
 <%@page import="java.util.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%@taglib prefix="myLib" uri= "/WEB-INF/tlds/myLib" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -30,84 +32,15 @@
                     </tr>
                 </c:forEach>
             </c:forEach>
-            <tr style="background-color: #ccffcc">
-                <td>FName</td>
-                <td>
-                    <c:out value="${b.FName}"></c:out>
-                </td>
-            </tr>
-            <tr style="background-color: #ccffcc">
-                <td>LName</td>
-                <td>
-                    <c:out value="${b.LName}"></c:out>
-                </td>
-            </tr>   
-            <tr style="background-color: #ccffcc">
-                <td>UserID</td>
-                <td>
-                <c:out value="${b.userID}"></c:out>
-                </td>
-            </tr>
-            <tr style="background-color: #ccffcc">
-                <td>Password</td>
-                <td>
-                <c:out value="${b.pasword}"></c:out>
-                </td>
-            </tr>
-            <tr style="background-color: #ccffcc">
-                <td>RePassword</td>
-                <td>
-                <c:out value="${b.rePassword}"></c:out>
-                </td>
-            </tr>
-            <tr style="background-color: #ccffcc">
-                <td>alias</td>
-                <td>
-                <c:out value="${b.alias}"></c:out>
-                </td>
-            </tr>
-            <tr style="background-color: #ccffcc">
-                <td>CountryOfRes</td>
-                <td>
-                <c:out value="${b.countryOfRes}"></c:out>
-                </td>
-            </tr>
-            <tr style="background-color: #ccffcc">
-                <td>City</td>
-                <td>
-                <c:out value="${b.city}"></c:out>
-                </td>
-            </tr>
-            <tr style="background-color: #ccffcc">
-                <td>Language</td>
-                <td>
-                    <c:out value="${b.language}"></c:out>
-                </td>
-            </tr>
-            <tr style="background-color: #ccffcc">
-                <td>SecurityQues</td>
-                <td>
-                <c:out value="${b.sercurityQues}"></c:out>
-                </td>
-            </tr>
-            <tr style="background-color: #ccffcc">
-                <td>SecurityAns</td>
-                <td>
-                <c:out value="${b.securityAns}"></c:out>
-                </td>
-            </tr>
-            <tr style="background-color: #ccffcc">
-                <td>ContactEmail</td>
-                <td>
-                <c:out value="${b.contactEmail}"></c:out>
-                </td>
-            </tr>
-            <tr style="background-color: #ccffcc">
-                <td>ContactOther</td>
-                <td>
-                <c:out value="${b.contactOther}"></c:out>
-                </td>
-            </tr>
+                 <myLib:beaner bean="${b}"  items="${header}">       
+                    <tr style="background-color: #ccffcc">
+                     <td>${name1}</td>
+                     <td>${value2}</td>
+                     <td>Hello</td>
+                     <td>Bye</td>
+                 </tr>
+            </myLib:beaner>  
+            
         </table>
     </body>
 </html>

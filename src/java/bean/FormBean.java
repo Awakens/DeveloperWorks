@@ -2,12 +2,13 @@
 package bean;
 
 import java.io.PrintWriter;
+import java.io.Serializable;
 
 /**
  *
  * @author Cokers
  */
-public class FormBean {
+public class FormBean implements Serializable{
     private String FName,LName,UserID,Password,RePassword,alias,CountryOfRes,City,Language,SecurityQues,SecurityAns,contactEmail, contactOther;
     public boolean isValid(){
         if(UserID.equals("") || UserID == null){

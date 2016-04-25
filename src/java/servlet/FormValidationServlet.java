@@ -36,6 +36,7 @@ public class FormValidationServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        response.setHeader("Cache-Control", "no-cache");
         ServletContext sc = this.getServletContext();
         FormBean b = (FormBean) sc.getAttribute("b");
         if(b == null){
